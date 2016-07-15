@@ -140,6 +140,15 @@ module Enumerable
 		return memo
 	end
 
+	def multiply_els
+		#multiply_els takes an array and multiplies the values
+		#multiply_els takes no arguments
+		
+		mult = self.my_inject {|memo, number| memo*number}
+		puts mult
+	end
+
+
 end
 		
 
@@ -164,4 +173,6 @@ end
 
 #test_array_string.my_map {|value| "lil" + "#{value}"}
 
-test_array_num.my_inject { |memo, number| memo + number}
+#test_array_num.my_inject { |memo, number| memo + number}
+
+test_array_num.multiply_els
