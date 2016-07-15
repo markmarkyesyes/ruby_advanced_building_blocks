@@ -3,11 +3,10 @@ def bubble_sort_by(array)
 	
 		while counter < array.length do
 			array.map.with_index do |input, index|
-				if array[index+1] == nil
-				elsif yield(array[index], array[index+1]) > 0
+				unless array[index+1] == nil
+					if yield(array[index], array[index+1]) > 0
 					array.insert(index, array.delete_at(index+1))
-				end
-				
+				end				
 				counter +=1
 			end
 		end
