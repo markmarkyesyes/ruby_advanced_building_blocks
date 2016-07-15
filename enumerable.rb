@@ -25,6 +25,22 @@ module Enumerable
 		end
 	end
 
+	def my_select
+		#select recieves one parameter
+		#select creates a new array
+		#select adds values determined true in the block to a new array
+		select = []
+
+		self.my_each do |value| 
+			if yield(value)  
+				select << value
+			end
+		end
+		
+		puts select
+		return select		
+	end
+
 end
 		
 
@@ -34,4 +50,7 @@ end
 
 #test_array.my_each {|param| puts param.to_i * 3}
 
-test_array.my_each_with_index {|value, index| puts "#{index}. #{value}"}
+#test_array.my_each_with_index {|value, index| puts "#{index}. #{value}"}
+
+test_array.my_select {|value| value%2==0}
+
