@@ -43,9 +43,9 @@ module Enumerable
 
 	def my_all?
 		#all? is an answering method.
-		#all accepts one parameter 
-		#all creates a new array with values calculated true by the block passed in.
-		#returns true if all values are true
+		#all? accepts one parameter 
+		#all? checks for values calculated true by the block passed in.
+		#all? returns true if all values checked are true
 		all = []
 
 		self.select do |value|
@@ -54,15 +54,35 @@ module Enumerable
 			end
 		end
 		if all.size == self.size
-			puts "True!"
+			puts "true"
 			return true
 		else 
-			puts "False!"
+			puts "false"
 			return false
 		end
 
 	end
 
+	def my_any?
+		#any? is an answering method
+		#any? accepts one parameter
+		#any? checks for values calculated true by the block
+		#if any values are true, any? returns true
+		any = []
+
+		self.select do |value|
+			if yield(value)
+				any << value
+			end
+		end
+		if any.size > 0
+			puts "true"
+			return true
+		else
+			puts "false"
+			return false
+		end
+	end
 end
 		
 
@@ -77,5 +97,7 @@ end
 
 #test_array_num.my_select {|value| value%2==0}
 
-test_array_string.my_all? {|word| word.length >= 3}
+#test_array_string.my_all? {|word| word.length >= 3}
+
+test_array_string.my_any? {|word| word.length >= 3}
 
