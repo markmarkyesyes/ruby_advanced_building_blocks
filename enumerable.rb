@@ -110,6 +110,22 @@ module Enumerable
 		puts self.size
 		return self.size
 	end
+
+	def my_map
+		#my_map takes one parameter
+		#my_map creates a new array from an existing one
+		#my_map uses the yield from the block to create each new value
+
+		mapp = []
+
+		self.my_each do |value|
+			mapp << yield(value)
+		end
+
+		puts mapp
+		return mapp
+	end
+
 end
 		
 
@@ -130,4 +146,6 @@ end
 
 #test_array_string.my_none? {|word| word.length > 100}
 
-test_array_string.my_count 
+#test_array_string.my_count 
+
+test_array_string.my_map {|value| "lil" + "#{value}"}
