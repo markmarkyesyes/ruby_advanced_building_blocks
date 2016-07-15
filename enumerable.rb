@@ -126,6 +126,20 @@ module Enumerable
 		return mapp
 	end
 
+	def my_inject
+		#inject takes a memo parameter and a value parameter
+		#inject accumulates values passed through it with the memo parameter
+		#inject returns the accumulation of the final iteration
+		memo = self[0]
+
+		self.my_each do |value|
+			memo += yield(memo, value)
+		end
+		puts memo
+		
+		return memo
+	end
+
 end
 		
 
@@ -148,4 +162,6 @@ end
 
 #test_array_string.my_count 
 
-test_array_string.my_map {|value| "lil" + "#{value}"}
+#test_array_string.my_map {|value| "lil" + "#{value}"}
+
+test_array_num.my_inject { |memo, number| memo + number}
