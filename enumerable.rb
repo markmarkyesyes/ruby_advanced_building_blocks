@@ -36,9 +36,31 @@ module Enumerable
 				select << value
 			end
 		end
-		
+
 		puts select
 		return select		
+	end
+
+	def my_all?
+		#all? is an answering method.
+		#all accepts one parameter 
+		#all creates a new array with values calculated true by the block passed in.
+		#returns true if all values are true
+		all = []
+
+		self.select do |value|
+			if yield(value)
+				all << value
+			end
+		end
+		if all.size == self.size
+			puts "True!"
+			return true
+		else 
+			puts "False!"
+			return false
+		end
+
 	end
 
 end
@@ -46,11 +68,14 @@ end
 
 
 	
-	test_array = [1,2,3,6]
+	test_array_num = [1,2,3,6]
+	test_array_string = ["delicious", "baby", "monkeys"]
 
-#test_array.my_each {|param| puts param.to_i * 3}
+#test_array_num.my_each {|param| puts param.to_i * 3}
 
-#test_array.my_each_with_index {|value, index| puts "#{index}. #{value}"}
+#test_array_num.my_each_with_index {|value, index| puts "#{index}. #{value}"}
 
-test_array.my_select {|value| value%2==0}
+#test_array_num.my_select {|value| value%2==0}
+
+test_array_string.my_all? {|word| word.length >= 3}
 
