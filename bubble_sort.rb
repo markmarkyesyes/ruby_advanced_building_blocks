@@ -1,5 +1,3 @@
-
-
 def bubble_sort(input)
 	array = input.split(",")
 	until array == array.sort 
@@ -11,7 +9,7 @@ def bubble_sort(input)
 			end
 		end
 	end
-	
+
 	puts array
 end
 
