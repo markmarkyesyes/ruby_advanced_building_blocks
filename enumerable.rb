@@ -83,6 +83,26 @@ module Enumerable
 			return false
 		end
 	end
+
+	def my_none?
+		#none? is an answering method
+		#none? accepts one parameter
+		#none? returns true if all arguments pass false
+
+		none = []
+
+		self.select do |value|
+			if yield(value)
+				none << value
+			end
+		end
+		if none.size == 0
+			puts "true"
+			return true
+		else puts "false"
+			return false
+		end
+	end
 end
 		
 
@@ -99,5 +119,9 @@ end
 
 #test_array_string.my_all? {|word| word.length >= 3}
 
-test_array_string.my_any? {|word| word.length >= 3}
+#test_array_string.my_any? {|word| word.length >= 3}
+
+test_array_string.my_none? {|word| word.length > 100}
+
+
 
