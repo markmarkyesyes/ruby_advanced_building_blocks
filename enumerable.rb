@@ -103,6 +103,13 @@ module Enumerable
 			return false
 		end
 	end
+
+	def my_count
+		#my_count takes no parameters
+		#my_count returns the amount of indexes in a passed value
+		puts self.size
+		return self.size
+	end
 end
 		
 
@@ -121,7 +128,6 @@ end
 
 #test_array_string.my_any? {|word| word.length >= 3}
 
-test_array_string.my_none? {|word| word.length > 100}
+#test_array_string.my_none? {|word| word.length > 100}
 
-
-
+test_array_string.my_count 
