@@ -111,19 +111,23 @@ module Enumerable
 		return self.size
 	end
 
-	def my_map
+	def my_map(&my_procx)
 		#my_map takes one parameter
 		#my_map creates a new array from an existing one
 		#my_map uses the yield from the block to create each new value
-
+		#my_map alternatively accepts a proc
+	
 		mapp = []
 
-		self.my_each do |value|
-			mapp << yield(value)
-		end
-
-		puts mapp
-		return mapp
+		if block_given?
+			self.my_each do |value|
+				mapp << yield(value)
+			end
+			return mapp
+		else
+			return self
+		end		
+		
 	end
 
 	def my_inject
@@ -171,8 +175,11 @@ end
 
 #test_array_string.my_count 
 
-#test_array_string.my_map {|value| "lil" + "#{value}"}
+cubs =test_array_string.my_map {|value| "lil" + "#{value}"}
 
 #test_array_num.my_inject { |memo, number| memo + number}
 
-test_array_num.multiply_els
+#test_array_num.multiply_els
+my_proc = Proc.new {|value| "lil" + "#{value}"}
+ test_array_string.my_map(&my_proc)
+puts cubs
