@@ -455,7 +455,7 @@ ENUMERABLES AND MODULES
 		array = [[1,2,3],[1,2,3],[1,2,3]]
 
 		array.each do |a,b,c|
-			p a
+			p ad
 			p b
 			p c
 		end 		# => outputs each value of each subarray on its own line.
