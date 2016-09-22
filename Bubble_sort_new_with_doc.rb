@@ -17,6 +17,8 @@
 #my theory is to recurse through the array committing one swap per iteration,
 #until the array returned at the end is the same as the array passed at the beginning
 
+#what I ended up doing was external enumeration in place of the recursion.
+
 def bubble_sort(array)
 	counter = 0 
 	until counter == (array.size-1) 
@@ -32,6 +34,55 @@ def bubble_sort(array)
 	end
 	return array
 end
-p bubble_sort([4,3,78,2,0,2,55,3,22,4])
+
+
+
+#Now create a similar method called #bubble_sort_by which sorts an array but accepts a block. 
+#The block should take two arguments which represent the two elements currently being compared.
+# Expect that the block's return will be similar to the spaceship operator you learned about 
+#before -- if the result of the block is negative, the element on the left is "smaller" than 
+#the element on the right. 0 means they are equal. A positive result means the left element is
+# greater. Use this to sort your array.
+
+
+def bubble_sort_by(array)
+	if block_given?
+		counter = 0 
+		until counter == (array.size-1)
+			array.each_with_index do |a, index|
+     			b = array[index+1]
+     			unless b == nil
+     				if yield(a,b) > 0
+     					array[index], array[index+1] = array[index+1], array[index]
+     				end
+     			end
+     		end
+     		counter += 1
+     	end
+	else
+		bubble_sort(array)
+	end
+end
+
+bubble_sort_by(["hi","hello","hey", "jimmy"]) do |left,right|
+       right.length <=> left.length
+     end
+
+#This one took a bit of looking into, but it seems that if you are not doing tuples sort, this is simply a matter
+# of mathematically comparing the iterated values in the block, then seeing if that is
+#greater than 0, denoting a swap. 
+#not a true schwartzian transform.
+
+
+
+
+
+     	
+
+
+
+
+
+
 
 
