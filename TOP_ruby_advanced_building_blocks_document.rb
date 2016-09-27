@@ -249,7 +249,7 @@ ITERATION
 	# or compare collections.
 
 ---------------------------
-BLOCKS, PROCS, AND LAMBDAS.
+BLOCKS, PROSC, AND LAMBDAS.
 ---------------------------
 
 +++Tangent+++ http://mixandgo.com/blog/mastering-ruby-blocks-in-less-than-5-minutes
