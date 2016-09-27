@@ -61,7 +61,7 @@ def bubble_sort_by(array)
      	end
 	else
 		bubble_sort(array)
-	end
+	ends
 end
 
 bubble_sort_by(["hi","hello","hey", "jimmy"]) do |left,right|
