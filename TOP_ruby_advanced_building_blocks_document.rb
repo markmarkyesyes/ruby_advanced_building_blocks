@@ -147,7 +147,7 @@ CONDITIONALS AND FLOW CONTROL
 			#Example 2
 				full_name = [['john', 'smith'], ['mary','jane']]
 				full_name.each do |name|
-					name[0]||name[1] == 'mary' ? p 'you smell good' : p 'keep movin, bub'
+					name[0]||name[1] == 'mary' ? p 'you smell goooooooood' : p 'keep movin, bub'
 				end
 				#This is some of the creepier code ive written :\
 			#Example 3 : build a benchmark comparing ternary conditional vs literal conditional
@@ -188,7 +188,7 @@ ITERATION
 
 4 # How do you print out each item of a simple array with...
 		array = [1,3,5,7]
-
+ 
 		#Example: loop 
 			i = 0
 			loop do 
@@ -242,6 +242,7 @@ ITERATION
 			
 	#each is used whenever we want to iterate over a collection in its entirety: think searching, filtering,
 	#modifications, etc.
+	#It should be stated that if the collection is large enough and we only want to access a certain part, slice and groupby should be used instead to keep overhead low.
 
 10 # What does nesting loops mean and when would you use it?
 	# Nesting loops is when you create a loop, then create another loop inside it, with no restrictions on the amount
@@ -295,15 +296,16 @@ BLOCKS, PROSC, AND LAMBDAS.
 			int = strings.map(&:to_i) #Passing the method as a Proc executes the method as a block.
 			# => [1,2,3]
 
+			so blocks are not procs, but procs are blocks AND pass things around AS blocks.
+
 
 +++End Tangents+++
 
 1 #How is a block like a function?
-	#A block is a chunk of code used as inputs for methods. 
-	???? define function ruby ????
+	a block is an anonymous function because it is not an object
 
 2 #How is a block different from a function?
-	???????????????
+	
 
 3 #What are the two ways to declare a block?
 	{} # => This is an inline block for when your block is defined on a single line
@@ -318,14 +320,15 @@ BLOCKS, PROSC, AND LAMBDAS.
 				puts "thats not mine officer"
 				yield 								# => The block is run and implicit return (last expression evaluated) is given to the yields position in the method.
 				puts "These arent my pants officer"
+				yield
 			end
 			my_meth {puts "Officer: mmmmmmmmhmmmm"}
 
 5 #What happens if you include a return statement in a block?
-	????????????????
+	It will exit the block
 
 6 #Why would you use a block instead of just creating a method? 
-	???????????
+	because it can be more lightweight to pass a block around, and you can assign it to a variable.r
 7 #What does yield do?
 	? #Yield pauses a method, evaluated the block passed to that method, 
 	  #then returns to the method with the implicit return from the block, and continues evaluation of the method
@@ -390,6 +393,7 @@ BLOCKS, PROSC, AND LAMBDAS.
 												  # => The variable points to a block object, aka a Proc.
 11 #What's the difference between a proc and a block?
 	# A proc is an object, and a block is not
+
 12 #When would you use a proc instead of a block?
 	# Why use procs? it seems like the 80/20 on this is to keep yourself from repeating code. 
 	# If there is a block you use for multiple things, best to save it as a Proc and point to it
@@ -431,6 +435,7 @@ ENUMERABLES AND MODULES
 	# Modules are useful for including certain scopes of functionality provided by grouped methods and constants
 	# so that you can have a range of functionality without having to include an entire library. 
 	# tl:dr only include what you need, but have the flixibility to do whatever you need within that scope of functionality.
+	#When we say scope of functionality, we mean that The module is built to apply to certain types and structures of data, and therefore is only applied to those scopes. this keeps things form breaking.
 
 3 #What does #each do?
 	#each enumerates over a collection applying a block to each object in sequence. 
@@ -503,9 +508,7 @@ ENUMERABLES AND MODULES
 			??????????????????????????????????????????????
 
 10 #What is the difference between #each #map and #select?
-	#each applies a block to every element of the collection and returns a new collection
-	#map applies a block to every element of a collection returning a new array
-	#select evaluates every element of a collection against a conditional returning only the true values in the original enumerable.
+	They Have different returns
 
 11 #What does #inject do?
 	#inject enumerates over a collection, returning an accumulator value to itself to be used in the next iteration.
@@ -517,7 +520,7 @@ ENUMERABLES AND MODULES
 			#inject implicitly returns the final memo value (46)
 
 12 #When might you use #inject?
-	#for more elegant totalling, or factoring. seems to be useful for aggregating mathematical data.
+	in place of sum, where you want to do some formatting or money summing. I could see a large application in formatting accumulation results. Also for pulling data from the accumulation at intervals.
 
 13 #How do you check if every item in a hash fulfills a certain criteria?
 	# by using the method .any?
