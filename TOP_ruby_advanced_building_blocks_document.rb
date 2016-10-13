@@ -18,10 +18,10 @@ CONDITIONALS AND FLOW CONTROL
 	1 == true 
 	[] == true
 	{} == true
-	-1 == false
+	-1 == true
 
 4 #When do you use elsif?
-	#elsif is used to add extra conditionals to an if statement.
+	#elsif is used to add extra conditions to an if statement.
 			#Example
 
 			ages = [21,41,33,05,23]
@@ -58,7 +58,7 @@ CONDITIONALS AND FLOW CONTROL
 		#-1 if the <value is less than >value
 		# 0 if the values are equal
 		# 1 if the >value is less than <value
-	#If the spaceship operator reults in 1, it will swap their positions in the collection,
+	#If the spaceship operator results in 1, (sort) it will swap their positions in the collection,
 	#else it will leave their positions alone.
 
 	#Ruby's sort method utilizes the spaceship operator, but not as a sorter itself, rather as 
@@ -74,7 +74,7 @@ CONDITIONALS AND FLOW CONTROL
 			collection.sort {|a, b| b<=>a} # => [7,6,5,4]
 
 7 #Why might you define your own <=> method?
-?????????????????????????????????????????????????????????????????????????????????????????????
+		???????????????????????????????????????????????????????????????????
 
 8 #What do the following logical operators do?
 	||, or  #Or is used in a condition to compare against multiple elements left to right. 
@@ -149,7 +149,7 @@ CONDITIONALS AND FLOW CONTROL
 				full_name.each do |name|
 					name[0]||name[1] == 'mary' ? p 'you smell good' : p 'keep movin, bub'
 				end
-
+				#This is some of the creepier code ive written :\
 			#Example 3 : build a benchmark comparing ternary conditional vs literal conditional
 			
 12# When should you use a case statement? 
@@ -662,3 +662,4 @@ Writing Methods
 
 13 #When would #send be used that's different from just running the method on an object 'normally'?
 	#call can be used dynamically to call and test methods during runtime.
+	#:send can be passed multiple method calls 
